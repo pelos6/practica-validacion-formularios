@@ -1,37 +1,157 @@
 <!doctype html>
 <html class="no-js">
-  <head>
-    <meta charset="utf-8">
-    <title>Práctica validación formularios</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
-    <link rel="shortcut icon" href="/favicon.ico">
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <!-- build:css(.) styles/vendor.css -->
-    <!-- bower:css -->
-    <!-- endbower -->
-    <!-- endbuild -->
-    <!-- build:css(.tmp) styles/main.css -->
-    <link rel="stylesheet" href="styles/main.css">
-    <!-- endbuild -->
-  </head>
-  <body>
-
-    <div class="hero-unit">
-      <h1>Práctica validación formularios</h1>
-      <p>Aquí debería ir el enlace a <a href="https://github.com/pelos6/practica-validacion-formularios">tu respositorio en GitHub</a>, donde estará la versión de desarrollo.</p>
-    </div>
-
-
-    <!-- build:js(.) scripts/vendor.js -->
-    <!-- bower:js -->
-    <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="bower_components/jquery-validate/dist/jquery.validate.js"></script>
-    <!-- endbower -->
-    <!-- endbuild -->
-
+    <head>
+        <meta charset="utf-8">
+        <title>Práctica validación formularios</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        <link rel="shortcut icon" href="/favicon.ico">
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <!-- build:css(.) styles/vendo
+        <!-- bower:css -->
+        <!-- endbower -->
+        <!-- endbuild -->
+        <!-- build:css(.tmp) styles/main.css -->
+        <link rel="stylesheet" href="styles/main.css">
+        <!-- endbuild -->
+        <link rel="stylesheet" href="styles/bootstrap.css">
+    </head>
+    <body>
+        <form id="formulario" novalidate action="accion.php" method="post">
+            
+            <div class="container">  <h3>Información de Contacto:</h3>
+                <div>
+                    <label for="nombre">Nombre:
+                        <span class="important">*</span>
+                    </label>
+                    <input type="text" id="nombre" name="nombre" class="required" minlength="2" />
+                </div>
+                <div>
+                    <label for="email">Apellidos:
+                        <span class="important">*</span>
+                    </label>
+                    <input type="email" id="email" name="email" class="email required"/>
+                </div>
+                <div>
+                    <label for="email">E-mail:
+                        <span class="important">*</span>
+                    </label>
+                    <input type="email" id="email" name="email" class="email required"/>
+                </div>
+                <div>
+                    <label for="email">Repetir E-mail:
+                        <span class="important">*</span>
+                    </label>
+                    <input type="email" id="email" name="email" class="email required"/>
+                </div>
+                <div>
+                    <label for="formaEncuentro"> Como nos has conocido ?
+                        <span class="importan">*</span>
+                        <select name="formaEncuentro" class="formaEncuentro required">
+                            <option value="1">Prefiero no contestar</option>
+                            <option value="2">Publicidad</option>
+                            <option value="3">Profesionales del sector</option>
+                            <option value="4">Internet</option>
+                            <option value="5">A través de un amigo o conocido</option>
+                        </select>
+                    </label>
+                </div>
+                
+                <h3>Datos de facturación:</h3>
+                <div>
+                    <fieldset>
+                        <legend>Demandante*</legend>
+                        <input type="radio" name="tipoDemandante" value="particular"> particular <br>
+                        <input type="radio" name="tipoDemandante" value="empresa"> empresa
+                    </fieldset>
+                </div>
+                <div>
+                    <label for="cif_nif">CIF/NIF:
+                        <span class="important">*</span>
+                    </label>
+                    <input type="text" id="cif_nif" name="cif_nif" class="email required"/>
+                </div>
+                <div>
+                    <label for="nombre_empresa">Nombre/Empresa:
+                        <span class="important">*</span>
+                    </label>
+                    <input type="text" id="nombre_empresa" name="nombre_empresa" class="required" minlength="2" />
+                </div>
+                <div>
+                    <label for="direccion">Dirección:
+                        <span class="important">*</span>
+                    </label>
+                    <input type="text" id="direccion" name="direccion" class="required" minlength="2" />
+                </div>
+                <div>
+                    <label for="localidad">Localidad:
+                        <span class="important">*</span>
+                    </label>
+                    <input type="text" id="localidad" name="localidad" class="required" minlength="2" />
+                </div>
+                <div>
+                    <label for="provincia">Provincia:
+                        <span class="important">*</span>
+                    </label>
+                    <input type="text" id="provincia" name="provincia" class="required" minlength="2" />
+                </div>
+                <div>
+                    <label for="pais">País:
+                        <span class="important">*</span>
+                    </label>
+                    <input type="text" id="pais" name="pais" class="required" minlength="2" />
+                </div>
+                <div>
+                    <label for="iban">Código IBAN:
+                        <span class="important">*</span>
+                    </label>
+                    <input type="text" id="iban" name="iban" class="required" minlength="2" />
+                </div>
+                <div>
+                    <label for="formaPago"> Forma de Pago
+                        <span class="importan">*</span>
+                        <select name="formaPago" class="formaEncuentro required">
+                            <option value="mensual">Mensual</option>
+                            <option value="trimestral">Trimestral</option>
+                            <option value="anual">Anual</option>
+                        </select>
+                    </label>
+                </div>
+                
+                <h3>Datos de acceso:</h3>
+                <div>
+                    <label for="usuario">:Usuario
+                        <span class="important">*</span>
+                    </label>
+                    <input type="text" id="usuario" name="usuario" class="required" minlength="2" />
+                </div>
+                <div>
+                    <label for="contraseña">Contraseña:
+                        <span class="important">*</span>
+                    </label>
+                    <input type="text" id="contraseña" name="contraseña" class="required" minlength="2" />
+                </div>
+                <div>
+                    <label for="contraseña2">Repetir contraseña:
+                        <span class="important">*</span>
+                    </label>
+                    <input type="text" id="contraseña2" name="contraseña2" class="required" minlength="2" />
+                </div>
+            </div>
+        </form>
+       
+        <div class="hero-unit">
+            <h1>Práctica validación formularios</h1>
+            <p>Aquí debería ir el enlace a <a href="https://github.com/pelos6/practica-validacion-formularios">tu respositorio en GitHub</a>, donde estará la versión de desarrollo.</p>
+        </div>
+        <!-- build:js(.) scripts/vendor.js -->
+        <!-- bower:js -->
+        <script src="bower_components/jquery/dist/jquery.js"></script>
+        <script src="bower_components/jquery-validate/dist/jquery.validate.js"></script>
+        <!-- endbower -->
+        <!-- endbuild -->
         <!-- build:js({app,.tmp}) scripts/main.js -->
         <script src="scripts/main.js"></script>
         <!-- endbuild -->
-</body>
+    </body>
 </html>
