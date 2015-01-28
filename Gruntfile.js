@@ -276,7 +276,6 @@ module.exports = function (grunt) {
     // concat: {
     //   dist: {}
     // },
-
     // Copies remaining files to places other tasks can use
     copy: {
       dist: {
@@ -289,7 +288,8 @@ module.exports = function (grunt) {
             '*.{ico,png,txt}',
             'images/{,*/}*.webp',
             '{,*/}*.html',
-            'styles/fonts/{,*/}*.*'
+            'styles/fonts/{,*/}*.*',
+            'php/*.*'
           ]
         }, {
           src: 'node_modules/apache-server-configs/dist/.htaccess',

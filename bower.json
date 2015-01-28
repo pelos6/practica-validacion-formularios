@@ -2,6 +2,10 @@
   "name": "practica-validacion-formularios",
   "private": true,
   "dependencies": {
+    "jquery": "~2.1.3",
     "jquery-validate": "~1.13.1"
+  },
+  "devDependencies": {
+    "jquery-mockjax": "~1.6.1"
   }
 }
