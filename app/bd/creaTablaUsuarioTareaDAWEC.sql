@@ -4,12 +4,12 @@
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `usuariostarea`
+-- Estructura de tabla para la tabla `usuariostareaDAWEC`
 --
 
-    CREATE TABLE IF NOT EXISTS `usuariosTarea` (
+    CREATE TABLE IF NOT EXISTS `usuariosTareaDAWEC` (
       `usuario` varchar(16) NOT NULL,
-      `contraseña` varchar(16) NOT NULL,
+      `contrasena` varchar(16) NOT NULL,
       `nombre` varchar(16) NOT NULL,
       `apellidos` varchar(32) NOT NULL,
        `telefono` varchar(9) ,
@@ -28,7 +28,7 @@
        
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-    ALTER TABLE `usuariosTarea`
+    ALTER TABLE `usuariosTareaDAWEC`
  ADD PRIMARY KEY (`usuario`);
 
-INSERT INTO `usuariostarea`(`usuario`, `contraseña`, `nombre`, `apellidos`, `telefono`, `email`, `modo_contacto`, `tipo_demandante`, `cif_nif`, `nombre_empresa`, `direccion`, `codigo_postal`, `localidad`, `provincia`, `pais`, `iban`, `modo_pago`) VALUES ('juanda','juanda','juanda','burro',null,'juandacorreo@gmail.com ',null,null,'25456737S',null,null,null,null,null,null,null,null)
+INSERT INTO `usuariosTareaDAWEC`(`usuario`, `contrasena`, `nombre`, `apellidos`, `telefono`, `email`, `modo_contacto`, `tipo_demandante`, `cif_nif`, `nombre_empresa`, `direccion`, `codigo_postal`, `localidad`, `provincia`, `pais`, `iban`, `modo_pago`) VALUES ('juanda','juanda','juanda','burro',null,'juandacorreo@gmail.com ',null,null,'25456737S',null,null,null,null,null,null,null,null)

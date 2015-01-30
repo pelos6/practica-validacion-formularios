@@ -1,20 +1,7 @@
 <?php
-//$cif_nif = trim(strtolower($_REQUEST['cif_nif']));
+// una libreria de proposito general
+require_once("utiles.php");
 $cif_nif = trim($_REQUEST['cif_nif']);
-function conectarMysqli() {
-    //$host = 'localhost';
-    $host = '127.0.0.1';
-    $user = "root";
-    $pass = "javier";   
-    $bd   = "dawc";
-  /*  $pass = "javier"; 
-  $user = "dwec"; 
-    $bd = 'dwes';*/
-    // echo "intentando conectar con ".$host." ".$user." ".$pas." ".$bd;    
-    // usamos mysqli (improved)
-    $conexion = new mysqli($host, $user, $pass, $bd);
-    return $conexion;
-}
  $error = $usuario_existe = FALSE;
  $conexion = conectarMysqli();
  $errorConexion = $conexion->connect_errno;
@@ -30,7 +17,7 @@ if (!$error) {
                 // Vamos a hacer una consulta preparada
                 $consulta = $conexion->stmt_init();
                 // vemos si esta el usuario como activo
-                $consulta->prepare("SELECT usuario FROM usuariosTarea WHERE cif_nif = ?");
+                $consulta->prepare("SELECT usuario FROM usuariosTareaDAWEC WHERE cif_nif = ?");
                 // Usamos bind_param para pasar los parámetros
                 $consulta->bind_param("s", $cif_nif);
                 // Ejecutamos la consulta
@@ -62,10 +49,11 @@ if (!$error){
         $traza = $traza. "5";
        if ($usuario_existe){
         //echo '"el usuario con cif_nif "'.$cif_nif. '"  ya existe"';
-        echo '"el usuario con cif_nif ya existe"';//.$cif_nif.$traza;
+       // echo '"el usuario con cif_nif ya existe"';//.$cif_nif.$traza;
+         echo ' "el usuario con cif_nif '.$cif_nif.' YA  existe" ';
        } else {
-        //  echo '"el usuario con cif_nif "'.$cif_nif. '" no existe"';
-        echo '"el usuario con cif_nif NO  existe"';//.$cif_nif.$traza;
+        //echo '"el usuario con cif_nif No existe"';//.$cif_nif.$traza;
+        echo ' "el usuario con cif_nif '.$cif_nif.'NO  existe" ';
        }   
 } else {
         $traza =$traza.  "4";
