@@ -1,11 +1,9 @@
-console.log('\'Allo para javier \'Allo!');
+console.log('\'Hola \'Hola!');
 $("#formulario").validate({
     debug: true,
-   /* rules: {
+    rules: {
         nombre: {
-            required: true,
-            minlength: 2, // tamaño mínimo
-            // remote: "php/comprueba_.php"
+            required: true
         },
         apellidos: {
             required: true
@@ -44,7 +42,8 @@ $("#formulario").validate({
         },
         codigo_postal: {
             required: true,
-            minlength: 5
+            minlength: 5,
+            maxlength: 5
         },
         localidad: {
             required: true
@@ -62,7 +61,8 @@ $("#formulario").validate({
             required: true
         },
         usuario: {
-            required: true
+            required: true,
+            minlength: 4
         },
         contraseña: {
             required: true
@@ -72,12 +72,12 @@ $("#formulario").validate({
             equalTo: "#contraseña"
         },
     },
-    // unos cuantos mensajer personalizados
+    // unos cuantos mensajes personalizados
     messages: {
-        nombre: "Por favor intruduce tu nombre",
+        nombre: "Por favor introduce tu nombre",
         apellidos: "Por favor introduce tus apellidos",
         telefono: {
-            required: "Por favor intruduce un número de teléfono",
+            required: "Por favor introduce un número de teléfono",
             minlength: "El número de teléfono debe tener al menos {0} digitos", // {0} es el valor del primer parametro 
             maxlength: "El número de teléfono debe tener como mucho {0} digitos"
         },
@@ -85,26 +85,34 @@ $("#formulario").validate({
             required: "Por favor confirma la dirección de correo electrónico",
             equalTo: "Las direcciones de correo no son iguales"
         },
+        contraseña: {
+            required: "La contraseña es obligatoria",
+        },
         contraseña2: {
             required: "Por favor confirma la contraseña",
             equalTo: "Las contraseñas no son iguales"
+        },
+        codigo_postal: {
+            required: "El código postal es obligatoria",
+            minlength: "El código postal debe tener al menos {0} digitos", // {0} es el valor del primer parametro 
+            maxlength: "El código postal debe tener como mucho {0} digitos"
         }
 
-    },*/
+    },
     //
-     submitHandler: function(form) {
-                var dataString = 'usuario=' + $('#usuario').val() + '&contrasena=' + $('#contrasena').val() + '&nombre=' + $('#nombre').val() + '&apellidos=' + $('#apellidos').val() + '&email=' + $('#email').val() + '&cif_nif=' + $('#cif_nif').val();
-                $.ajax({
-                    type: "POST", // tipo de la llamada ajax
-                    url: "php/graba.php", // que archivo recive la llamada
-                    data: dataString, //los datos que van con la llamada tipo usuario=javier&contrasena=undefined&nombre=javier&apellidos=iranzo&email=javieriranzo@hotmail.com&cif_nif=1770301v
-                    success: function(data) {
-                        $("#ok").html(data);
-                        $("#ok").show();
-                        $("#formid").hide();
-                    }
-                });
+    submitHandler: function(form) {
+        var dataString = 'usuario=' + $('#usuario').val() + '&contrasena=' + $('#contrasena').val() + '&nombre=' + $('#nombre').val() + '&apellidos=' + $('#apellidos').val() + '&email=' + $('#email').val() + '&cif_nif=' + $('#cif_nif').val();
+        $.ajax({
+            type: "POST", // tipo de la llamada ajax
+            url: "php/graba.php", // que archivo recive la llamada
+            data: dataString, //los datos que van con la llamada tipo usuario=javier&contrasena=undefined&nombre=javier&apellidos=iranzo&email=javieriranzo@hotmail.com&cif_nif=1770301v
+            success: function(data) {
+                $("#ok").html(data);
+                $("#ok").show();
+                $("#formid").hide();
             }
+        });
+    }
 });
 // propone el nombre de la empresa como la unión del nombre y apellido del usuario
 $("#nombre_empresa").focus(function() {
