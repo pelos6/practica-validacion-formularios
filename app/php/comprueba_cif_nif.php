@@ -48,13 +48,11 @@ if (!$error) {
 if (!$error){
         $traza = $traza. "5";
        if ($usuario_existe){
-        //echo '"el usuario con cif_nif "'.$cif_nif. '"  ya existe"';
-       // echo '"el usuario con cif_nif ya existe"';//.$cif_nif.$traza;
          echo ' "el usuario con cif_nif '.$cif_nif.' YA  existe" ';
-       } else {
+       }/* else {
         //echo '"el usuario con cif_nif No existe"';//.$cif_nif.$traza;
         echo ' "el usuario con cif_nif '.$cif_nif.'NO  existe" ';
-       }   
+       }   */
 } else {
         $traza =$traza.  "4";
         echo $aplicacionErr;    
