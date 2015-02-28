@@ -1,12 +1,20 @@
-console.log('\'Hola \'Hola!');
+console.log('\'Hola \'Hola! javier');
+'use strict';
+
+// cargamos las provincias
+$('#provincia').load("php/provincias.php");
+// cargamos los paises
+$("#pais").load("php/paises.php");
 
 $("#formulario").validate({
-    // oculta y muestra el campo no valido
-    highlight: function(element, errorClass) {
-        $(element).fadeOut(function() {
-            $(element).fadeIn();
-        });
-    },
+    // oculta y muestra el campo no valido ... pero es un tanto molesto ;)
+    /*  highlight: function(element, errorClass) {
+          $(element).fadeOut(function() {
+              $(element).fadeIn();
+          });
+      },*/
+    // util para probar el final ...
+    ignore: ".form-control",
     debug: true,
     rules: {
         nombre: {
@@ -40,20 +48,18 @@ $("#formulario").validate({
         cif_nif: {
             required: true,
             nifES: function() {
-                // Si el demandante es particular se comprueba formato nif.
+                // El identificador es nif para personas....
                 if ($("#particular").is(":checked")) {
-                    $('#cif_nif').val().toUpperCase();
                     return 'nifES';
                 }
             },
             cifES: function() {
-                // Si el demandante es empresa se comprueba formato cif.
+                // ...y dif para empresas
                 if ($("#empresa").is(":checked")) {
-                    $('#cif_nif').val().toUpperCase();
                     return 'cifES';
                 }
             },
-             remote: "php/comprueba_cif_nif.php" // usa el programa indicado
+            remote: "php/comprueba_cif_nif.php" // usa el programa indicado
         },
         nombre_empresa: {
             required: true
@@ -79,7 +85,7 @@ $("#formulario").validate({
             required: true,
             iban: iban
         },
-        forma_pago: {
+        pago: {
             required: true
         },
         usuario: {
@@ -103,6 +109,9 @@ $("#formulario").validate({
             minlength: "El número de teléfono debe tener al menos {0} digitos", // {0} es el valor del primer parametro 
             maxlength: "El número de teléfono debe tener como mucho {0} digitos"
         },
+        email: {
+            required: "Por favor introduce una dirección de correo electrónico",
+        },
         email2: {
             required: "Por favor confirma la dirección de correo electrónico",
             equalTo: "Las direcciones de correo no son iguales"
@@ -118,24 +127,80 @@ $("#formulario").validate({
             required: "El código postal es obligatoria",
             minlength: "El código postal debe tener al menos {0} digitos", // {0} es el valor del primer parametro 
             maxlength: "El código postal debe tener como mucho {0} digitos"
+        },
+        cif_nif: {
+            required: "La información de este campo es importante."
+        },
+        direccion: {
+            required: "La dirección es obligatoria."
+        },
+        usuario: {
+            required: "El usuario es obligatorio."
+        },
+        contraseña: {
+            required: "La contraseña es obligatoria."
+        },
+        contraseña2: {
+            required: "La confirmación de la contraseña es obligatoria."
+        },
+        nombre_empresa: {
+            required: "La información de este campo es importante."
         }
 
     },
     //
     submitHandler: function(form) {
-        var dataString = 'usuario=' + $('#usuario').val() + '&contrasena=' + $('#contrasena').val() + '&nombre=' + $('#nombre').val() + '&apellidos=' + $('#apellidos').val() + '&email=' + $('#email').val() + '&cif_nif=' + $('#cif_nif').val();
-        $.ajax({
-            type: "POST", // tipo de la llamada ajax
-            url: "php/graba.php", // que archivo recive la llamada
-            data: dataString, //los datos que van con la llamada tipo usuario=javier&contrasena=undefined&nombre=javier&apellidos=iranzo&email=javieriranzo@hotmail.com&cif_nif=1770301v
-            success: function(data) {
-                $("#ok").html(data);
-                $("#ok").show();
-                $("#formid").hide();
-            }
+        var usuario = $("#usuario").val();
+        var precio = $("input[name='pago']:checked").val();
+        $.growl({
+            title: "Exito!",
+            location: "tc",
+            size: "large",
+            style: "warning",
+            message:"Se va a dar de alta al usuario " + usuario + " con una cuota de: " + precio +
+             " Euros. \nPor favor confirme la operación"
         });
+        // var resp = confirm("Se va a dar de alta al usuario " + usuario + " con una cuota de: " + precio +
+        //     " Euros. \nPor favor confirme la operación");
+        if (resp) {
+            $.growl({
+                title: "Exito!",
+                location: "tc",
+                size: "large",
+                style: "warning",
+                message: "La clinica ha sido tratada con exito"
+            });
+            //alert("Confirmada el alta del usuario " + usuario + " .");
+            var dataString = 'usuario=' + $('#usuario').val() + '&contrasena=' + $('#contrasena').val() + '&nombre=' + $('#nombre').val() + '&apellidos=' + $('#apellidos').val() + '&email=' + $('#email').val() + '&cif_nif=' + $('#cif_nif').val();
+            $.ajax({
+                type: "POST", // tipo de la llamada ajax
+                url: "php/graba.php", // que archivo recive la llamada
+                data: dataString, //los datos que van con la llamada tipo usuario=javier&contrasena=undefined&nombre=javier&apellidos=iranzo&email=javieriranzo@hotmail.com&cif_nif=1770301v
+                success: function(data) {
+                    $("#ok").html(data);
+                    $("#ok").show();
+                    $("#formid").hide();
+                }
+            });
+        } else {
+            alert("Cancelada el alta del usuario " + usuario + " .");
+        }
+
+        /*  var dataString = 'usuario=' + $('#usuario').val() + '&contrasena=' + $('#contrasena').val() + '&nombre=' + $('#nombre').val() + '&apellidos=' + $('#apellidos').val() + '&email=' + $('#email').val() + '&cif_nif=' + $('#cif_nif').val();
+          $.ajax({
+              type: "POST", // tipo de la llamada ajax
+              url: "php/graba.php", // que archivo recive la llamada
+              data: dataString, //los datos que van con la llamada tipo usuario=javier&contrasena=undefined&nombre=javier&apellidos=iranzo&email=javieriranzo@hotmail.com&cif_nif=1770301v
+              success: function(data) {
+                  $("#ok").html(data);
+                  $("#ok").show();
+                  $("#formid").hide();
+              }
+          });*/
     }
 });
+
+
 // propone el nombre de la empresa como la unión del nombre y apellido del usuario
 // pero no se puede dar el caso
 $("#nombre_empresa").focus(function() {
@@ -144,6 +209,13 @@ $("#nombre_empresa").focus(function() {
     if (nombre && apellidos && !this.value) {
         this.value = (nombre + " " + apellidos).toLowerCase();
     }
+});
+
+// Metodo que gestiona la complexidad de la contraseña.
+$("#contraseña").focusin(function() {
+    $("#contraseña").complexify({}, function(valid, complexity) {
+        $("#BarraPass").attr("value", complexity);
+    });
 });
 
 // rellenar el usuario con el correo electrónico
@@ -165,7 +237,7 @@ $("#apellidos").focusout(function() {
 //Para modificar la etiqueta y el placeholder de CIF y nombre
 $('#empresa').change(function() {
     $('#etiqueta_cif_nif').html('CIF *');
-    $('#etiqueta_nombre_empresa').html('Nombre de la Empresa *');
+    $('#etiqueta_nombre_empresa').html('Empresa *');
     $('#cif_nif').prop('placeholder', 'CIF');
     $('#nombre_empresa').prop('placeholder', 'Empresa');
     // el nombre de la empresa es libre
@@ -175,9 +247,9 @@ $('#empresa').change(function() {
 
 $('#particular').change(function() {
     $('#etiqueta_cif_nif').html('NIF *');
-    $('#etiqueta_nombre_empresa').html('Particular *');
+    $('#etiqueta_nombre_empresa').html('Nombre *');
     $('#cif_nif').prop('placeholder', 'NIF');
-    $('#nombre_empresa').prop('placeholder', 'Particular');
+    $('#nombre_empresa').prop('placeholder', 'Nombre');
     // el nombre es la combinacion de nombre y apellido y no se puede cambiar
     var nomape = $("#nombre").val() + " " + $("#apellidos").val();
     $("#nombre_empresa").val(nomape);
@@ -187,30 +259,30 @@ $('#particular').change(function() {
 
 // Si el Código Postal se compone de 4 dígitos, se agrega un 0 a la izquierda.
 $("#codigo_postal").focusout(function() {
-     var cp = $('#codigo_postal').val();
-        var digitos = cp.length;
-        var ceros = "";
-        for (var i = 1; i <= (5 - digitos); i++) {
-            ceros = '0' + ceros;
-        };
-        var resultado = ceros + cp;
-        $('#codigo_postal').val(resultado);
-   /* var caracteres = $("#codigo_postal").val();
-        if (caracteres.length == 4) {
-            $("#codigo_postal").val("0" + caracteres);
-        }*/
-        var cod = parseInt(resultado.substring(0,2));
-        if (cod === 50) {
-            $("#localidad").val('Zaragoza');
-        } else {
-            $("#localidad").val('');
-        }
-        $("#provincia option[value="+cod+"]").attr("selected",true);
-        if ( cod>0 && cod<53) {
-            $("#pais").val('España');
-        } else {
-            $("#pais").val('');
-        }
+    var cp = $('#codigo_postal').val();
+    var digitos = cp.length;
+    var ceros = "";
+    for (var i = 1; i <= (5 - digitos); i++) {
+        ceros = '0' + ceros;
+    };
+    var resultado = ceros + cp;
+    $('#codigo_postal').val(resultado);
+    /* var caracteres = $("#codigo_postal").val();
+         if (caracteres.length == 4) {
+             $("#codigo_postal").val("0" + caracteres);
+         }*/
+    var cod = parseInt(resultado.substring(0, 2));
+    if (cod === 50) {
+        $("#localidad").val('Zaragoza');
+    } else {
+        $("#localidad").val('');
+    }
+    $("#provincia option[value=" + cod + "]").attr("selected", true);
+    if (cod > 0 && cod < 53) {
+        $("#pais").val('España');
+    } else {
+        $("#pais").val('');
+    }
 
 });
 // añado la validación de NIF de additional-methods.js para no tener que incluir todo el archivo 

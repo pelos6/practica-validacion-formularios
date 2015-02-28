@@ -1,5 +1,9 @@
 legend {
     color: red;
+    text-align: center;
+}
+fieldset{
+    border:10;
 }
 body{
 background-color: #f0f0f0;

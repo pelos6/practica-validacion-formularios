@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Práctica validación formularios</title>
+    <title>Práctica validación formularios Javier Iranzo</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <link rel="shortcut icon" href="/favicon.ico">
@@ -15,6 +15,7 @@
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/bootstrap.css" />
+    <link rel="stylesheet" href="../bower_components/growl/stylesheets/jquery.growl.css" />
     <!--por ultimo mis estilos que van por delante de los demas-->
     <link rel="stylesheet" href="styles/estilos.css" />
 
@@ -22,6 +23,7 @@
 </head>
 
 <body>
+    <!-- el formulario la tratamos con js realmente no se ejecuto la accion ni se usa el method-->
     <form id="formulario" class="form-horizontal" novalidate action="accion.php" method="post">
         <fieldset>
             <legend>Información de Contacto:</legend>
@@ -48,7 +50,7 @@
             </div>
             <!-- Text input-->
             <div class="form-group">
-                <label class="col-md-4 control-label" for="email">E-mail juandacorreo@gmail.com * :</label>
+                <label class="col-md-4 control-label" for="email">E-mail * :</label>
                 <div class="col-md-4">
                     <input id="email" name="email" type="text" placeholder="email" class="form-control input-md">
                 </div>
@@ -107,9 +109,9 @@
                 -->
             <!-- Text input-->
             <div class="form-group">
-                <label class="col-md-4 control-label" for="nombre_empresa" id="etiqueta_nombre_empresa">Prticular * :</label>
+                <label class="col-md-4 control-label" for="nombre_empresa" id="etiqueta_nombre_empresa">Nombre * :</label>
                 <div class="col-md-4">
-                    <input id="nombre_empresa" name="nombre_empresa" type="text" placeholder="nombre empresa" class="form-control input-md">
+                    <input id="nombre_empresa" name="nombre_empresa" disabled type="text" placeholder="nombre" class="form-control input-md">
                 </div>
             </div>
             <!-- Text input-->
@@ -137,33 +139,36 @@
             <div class="form-group">
                 <label class="col-md-4 control-label" for="provincia">Provincia * :</label>
                 <div class="col-md-4">
-                    <input id="provincia" name="provincia" type="text" placeholder="provincia" class="form-control input-md">
+                    <select name="provincia" id="provincia" class="form-control" disabled></select>
                 </div>
             </div>
             <!-- Text input-->
             <div class="form-group">
-                <label class="col-md-4 control-label" for="pais">País * :</label>
+                <label class="col-md-4 control-label" for="provincia">Pais * :</label>
                 <div class="col-md-4">
-                    <input id="pais" name="pais" type="text" placeholder="pais" class="form-control input-md">
+                    <select name="pais" id="pais" class="form-control"> </select>
                 </div>
             </div>
             <!-- Text input-->
             <div class="form-group">
-                <label class="col-md-4 control-label" for="iban">IBAN ES91 2085 0166 69 0330150871 * :</label>
+                <label class="col-md-4 control-label" for="iban">IBAN * :</label>
                 <div class="col-md-4">
-                    <input id="iban" name="iban" type="text" placeholder="iban" class="form-control input-md">
+                    <input id="iban" name="iban" type="text" placeholder="iban" class="form-control">
                 </div>
             </div>
             <!-- Select Basic -->
             <div class="form-group">
-                <label class="col-md-4 control-label" for="forma_pago">Forma de pago * </label>
+                <label class="col-md-4 control-label">Forma de pago *</label>
                 <div class="col-md-4">
-                    <select id="forma_pago" name="forma_pago" class="form-control">
-                        <option value="mensual"></option>
-                        <option value="mensual">Mensual</option>
-                        <option value="trimestral">Trimestral</option>
-                        <option value="anual">Anual</option>
-                    </select>
+                    <label class="radio-inline">
+                        <input type="radio" name="pago" id="mensual" value="50" checked> Mensual
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="pago" id="trimestral" value="140"> Trimestral
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="pago" id="anual" value="550"> Anual
+                    </label>
                 </div>
             </div>
             <legend>Datos de acceso:</legend>
@@ -171,7 +176,7 @@
             <div class="form-group">
                 <label class="col-md-4 control-label" for="usuario">Usuario * :</label>
                 <div class="col-md-4">
-                    <input id="usuario" name="usuario" type="text" placeholder="usuario" class="form-control input-md">
+                    <input id="usuario" name="usuario" type="text" placeholder="usuario" disabled class="form-control input-md">
                 </div>
             </div>
             <!-- Text input-->
@@ -181,11 +186,19 @@
                     <input id="contraseña" name="contraseña" type="text" placeholder="contraseña" class="form-control input-md">
                 </div>
             </div>
+
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="contraseña">Complejidad de la Contraseña * :</label>
+                <div class="col-md-4">
+                    <meter value="0" id="BarraPass" min="0" max="100" optimum="90" low="10" high="50" class="form-control input-md"></meter>
+                </div>
+            </div>
+
             <!-- Text input-->
             <div class="form-group">
                 <label class="col-md-4 control-label" for="contraseña2">Repite contraseña * :</label>
                 <div class="col-md-4">
-                    <input id="contraseña2" name="contraseña2" type="text" placeholder="contraseña2" class="form-control input-md">
+                    <input id="contraseña2" name="contraseña2" type="text" placeholder="contraseña2" class="form-control">
                 </div>
             </div>
             <!-- Button -->
@@ -193,9 +206,10 @@
                 <label class="col-md-4 control-label" for="singlebutton"></label>
                 <div class="col-md-4">
                     <button id="singlebutton" name="singlebutton" class="btn btn-primary">Enviar</button>
+                    <button type="reset" onclick="window.location.reload()" class="btn btn-primary">Limpiar</button>
                 </div>
             </div>
-            </div>
+
         </fieldset>
     </form>
     <div class="hero-unit">
@@ -209,6 +223,8 @@
     <!-- bower:js -->
     <script src="../bower_components/jquery/dist/jquery.js"></script>
     <script src="../bower_components/jquery-validate/dist/jquery.validate.js"></script>
+    <script src="../bower_components/jquery.complexify.js/jquery.complexify.js"></script>
+    <script src="../bower_components/growl/javascripts/jquery.growl.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:js({app,.tmp}) scripts/main.js -->
