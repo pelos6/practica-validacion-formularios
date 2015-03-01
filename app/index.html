@@ -13,11 +13,9 @@
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
-    <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/bootstrap.css" />
-    <link rel="stylesheet" href="../bower_components/growl/stylesheets/jquery.growl.css" />
     <!--por ultimo mis estilos que van por delante de los demas-->
-    <link rel="stylesheet" href="styles/estilos.css" />
+    <link rel="stylesheet" href="styles/main.css">
 
     <!-- endbuild -->
 </head>
@@ -183,7 +181,7 @@
             <div class="form-group">
                 <label class="col-md-4 control-label" for="contraseña">Contraseña * :</label>
                 <div class="col-md-4">
-                    <input id="contraseña" name="contraseña" type="text" placeholder="contraseña" class="form-control input-md">
+                    <input id="contraseña" name="contraseña" type="password" placeholder="contraseña" class="form-control input-md">
                 </div>
             </div>
 
@@ -198,7 +196,7 @@
             <div class="form-group">
                 <label class="col-md-4 control-label" for="contraseña2">Repite contraseña * :</label>
                 <div class="col-md-4">
-                    <input id="contraseña2" name="contraseña2" type="text" placeholder="contraseña2" class="form-control">
+                    <input id="contraseña2" name="contraseña2" type="password" placeholder="contraseña2" class="form-control">
                 </div>
             </div>
             <!-- Button -->
@@ -212,24 +210,20 @@
 
         </fieldset>
     </form>
-    <div class="hero-unit">
-        <a href="../../mostrar-informacion/ejercicio2.html">los datos grabados</a>
-        <br>
+    <div class="pie">
         <hr>
-        <a href="https://github.com/pelos6/practica-validacion-formularios">tu repositorio en GitHub con versión de desarrollo</a>
-
+        <a href="https://github.com/pelos6/practica-validacion-formularios">GitHub v1.0.0 javier iranzo</a>
     </div>
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
-    <script src="../bower_components/jquery/dist/jquery.js"></script>
-    <script src="../bower_components/jquery-validate/dist/jquery.validate.js"></script>
-    <script src="../bower_components/jquery.complexify.js/jquery.complexify.js"></script>
-    <script src="../bower_components/growl/javascripts/jquery.growl.js"></script>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/jquery-validate/dist/jquery.validate.js"></script>
+    <script src="bower_components/jquery.complexify.js/jquery.complexify.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:js({app,.tmp}) scripts/main.js -->
-    <script src="scripts/main.js"></script>
     <script src="scripts/messages_es.js"></script>
+    <script src="scripts/main.js"></script>
     <!-- endbuild -->
 </body>
 

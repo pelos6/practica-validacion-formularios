@@ -1,4 +1,4 @@
-console.log('\'Hola \'Hola! javier');
+//console.log('\'Hola \'Hola! javier');
 'use strict';
 
 // cargamos las provincias
@@ -14,7 +14,7 @@ $("#formulario").validate({
           });
       },*/
     // util para probar el final ...
-    ignore: ".form-control",
+    //ignore: ".form-control",
     debug: true,
     rules: {
         nombre: {
@@ -152,29 +152,14 @@ $("#formulario").validate({
     submitHandler: function(form) {
         var usuario = $("#usuario").val();
         var precio = $("input[name='pago']:checked").val();
-        $.growl({
-            title: "Exito!",
-            location: "tc",
-            size: "large",
-            style: "warning",
-            message:"Se va a dar de alta al usuario " + usuario + " con una cuota de: " + precio +
-             " Euros. \nPor favor confirme la operación"
-        });
-        // var resp = confirm("Se va a dar de alta al usuario " + usuario + " con una cuota de: " + precio +
-        //     " Euros. \nPor favor confirme la operación");
+         var resp = confirm("Se va a dar de alta al usuario " + usuario + " con una cuota de: " + precio +
+             " Euros. \nPor favor confirme la operación");
         if (resp) {
-            $.growl({
-                title: "Exito!",
-                location: "tc",
-                size: "large",
-                style: "warning",
-                message: "La clinica ha sido tratada con exito"
-            });
-            //alert("Confirmada el alta del usuario " + usuario + " .");
+            alert("Confirmada el alta del usuario " + usuario + " .");
             var dataString = 'usuario=' + $('#usuario').val() + '&contrasena=' + $('#contrasena').val() + '&nombre=' + $('#nombre').val() + '&apellidos=' + $('#apellidos').val() + '&email=' + $('#email').val() + '&cif_nif=' + $('#cif_nif').val();
             $.ajax({
                 type: "POST", // tipo de la llamada ajax
-                url: "php/graba.php", // que archivo recive la llamada
+                url: "php/graba.php", // que archivo procesa la llamada
                 data: dataString, //los datos que van con la llamada tipo usuario=javier&contrasena=undefined&nombre=javier&apellidos=iranzo&email=javieriranzo@hotmail.com&cif_nif=1770301v
                 success: function(data) {
                     $("#ok").html(data);
@@ -183,7 +168,7 @@ $("#formulario").validate({
                 }
             });
         } else {
-            alert("Cancelada el alta del usuario " + usuario + " .");
+             alert("Cancelada el alta del usuario " + usuario + " .");
         }
 
         /*  var dataString = 'usuario=' + $('#usuario').val() + '&contrasena=' + $('#contrasena').val() + '&nombre=' + $('#nombre').val() + '&apellidos=' + $('#apellidos').val() + '&email=' + $('#email').val() + '&cif_nif=' + $('#cif_nif').val();

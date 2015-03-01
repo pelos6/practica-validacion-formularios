@@ -1,4 +1,5 @@
 <?php
+header("Access-Control-Allow-Origin: *"); 
 echo 'Gracias '.$_POST['email'].' '.$_POST['cif_nif'].'. La información ha sido enviada correctamente!';
 // una libreria de proposito general
 require_once("utiles.php");

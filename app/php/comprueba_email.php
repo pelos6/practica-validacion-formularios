@@ -1,5 +1,5 @@
 <?php
-
+ header("Access-Control-Allow-Origin: *"); 
 // una libreria de proposito general
 require_once("utiles.php");
 $email = trim($_REQUEST['email']);

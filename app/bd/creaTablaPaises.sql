@@ -1,6 +1,7 @@
 -- Base de datos: `dwec`
 --
-use dawc;
+-- use dawc;
+-- use javieriranzo_dwes ;
 
 CREATE TABLE `paises` (
 `id` int(11) NOT NULL AUTO_INCREMENT,

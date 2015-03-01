@@ -1,6 +1,7 @@
 -- Base de datos: `dwec`
 --
-use dawc;
+-- use dawc;
+-- use javieriranzo_dwes ;
 
 CREATE TABLE `provincias` (
   `id_provincia` smallint(6) DEFAULT NULL,
