@@ -12,8 +12,8 @@
 -   .- mostrar la información grabada
 -   .- editar la información grabada
 -.- fin 1.0.1
--.- 1.0.0 28/02/2015
--.- Primera versión estable para presentar en el primer plazo.
+-   .- 1.0.0 28/02/2015
+-   .- Primera versión estable para presentar en el primer plazo.
 - # Bugs
 -      .- Los campos contraseña no estan enmascarados
 - # Mejoras pendientes
