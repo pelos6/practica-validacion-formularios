@@ -1,7 +1,9 @@
 # Práctica Validación de Formularios Javier Iranzo Burriel.
-# Versiones 
-.- 1.0.1 01/03/2015
-    .- Versión estable con correciones para presentar .
+# Versiones
+.- 1.0.1 01/03/2015  
+    .- Versión estable para presentar.
+    # Bugs
+        .- Corregido :Los campos contraseña no estan enmascarados
     # Mejoras pendientes
         .- mensajes al aceptar el formulario con growl pero como no consigo el de confirmación lo intentare con el plugin 
         jquery-confirm 
@@ -22,7 +24,6 @@
         .- mostrar la información grabada
         .- editar la información grabada
 .- fin 1.0.0
-
 # Enunciado
 
 Se realiza una página web para una empresa que vende servicios de Internet a otras compañías.
