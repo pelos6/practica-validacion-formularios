@@ -8,15 +8,14 @@
     <meta name="viewport" content="width=device-width">
     <link rel="shortcut icon" href="/favicon.ico">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <!-- build:css(.) styles/vendo
-        <!-- bower:css -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
-    <link rel="stylesheet" href="styles/bootstrap.css" />
     <!--por ultimo mis estilos que van por delante de los demas-->
     <link rel="stylesheet" href="styles/main.css">
-
     <!-- endbuild -->
 </head>
 
@@ -179,14 +178,14 @@
             </div>
             <!-- Text input-->
             <div class="form-group">
-                <label class="col-md-4 control-label" for="contraseña">Contraseña * :</label>
+                <label class="col-md-4 control-label" for="contrasena">Contrasena * :</label>
                 <div class="col-md-4">
-                    <input id="contraseña" name="contraseña" type="password" placeholder="contraseña" class="form-control input-md">
+                    <input id="contrasena" name="contrasena" type="password" placeholder="contrasena" class="form-control input-md">
                 </div>
             </div>
 
             <div class="form-group">
-                <label class="col-md-4 control-label" for="contraseña">Complejidad de la Contraseña * :</label>
+                <label class="col-md-4 control-label" for="contrasena">Complejidad de la Contrasena * :</label>
                 <div class="col-md-4">
                     <meter value="0" id="BarraPass" min="0" max="100" optimum="90" low="10" high="50" class="form-control input-md"></meter>
                 </div>
@@ -194,9 +193,9 @@
 
             <!-- Text input-->
             <div class="form-group">
-                <label class="col-md-4 control-label" for="contraseña2">Repite contraseña * :</label>
+                <label class="col-md-4 control-label" for="contrasena2">Repite contrasena * :</label>
                 <div class="col-md-4">
-                    <input id="contraseña2" name="contraseña2" type="password" placeholder="contraseña2" class="form-control">
+                    <input id="contrasena2" name="contrasena2" type="password" placeholder="contrasena2" class="form-control">
                 </div>
             </div>
             <!-- Button -->
@@ -213,6 +212,8 @@
     <div class="pie">
         <hr>
         <a href="https://github.com/pelos6/practica-validacion-formularios">GitHub v1.0.1 javier iranzo</a>
+        <hr> 
+        <hr>
     </div>
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->

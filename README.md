@@ -1,40 +1,36 @@
-# Práctica Validación de Formularios Javier Iranzo Burriel.
-# Versiones
-.- 1.0.1 01/03/2015
-- .- Versión estable para presentar.
--  # Bugs
--      .- Corregido :Los campos contraseña no estan enmascarados
--  # Mejoras pendientes
--   .- mensajes al aceptar el formulario con growl pero como no consigo el de confirmación lo intentare con el plugin 
--    jquery-confirm 
--       http://craftpip.github.io/jquery-confirm/
--   .- grabar en base de datos
--   .- mostrar la información grabada
--   .- editar la información grabada
--.- fin 1.0.1
--.- 1.0.0 28/02/2015
--.- Primera versión estable para presentar en el primer plazo.
-- # Bugs
--      .- Los campos contraseña no estan enmascarados
-- # Mejoras pendientes
--    .- mensajes al aceptar el formulario con growl pero como no consigo el de confirmación lo intentare con el plugin 
--    jquery-confirm 
--   http://craftpip.github.io/jquery-confirm/
--  .- grabar en base de datos
--  .- mostrar la información grabada
--  .- editar la información grabada
--.- fin 1.0.0
+# Práctica Validación de Formularios Javier Iranzo Burriel.#
+## Versiones##
+*   para 1.0.2 01/03/2015 Versión estable para presentar.
+    1.  Bugs
+        * corregido: no hace un css minified para main.css lo une con los vendor css.
+*   1.0.1 01/03/2015 Versión estable para presentar.
+    1.  Bugs
+        * Corregido :Los campos contraseña no estan enmascarados
+    2.  Mejoras pendientes
+        * grabar en base de datos
+        * mensajes al aceptar el formulario con growl pero como no consigo el de confirmación lo intentare con el plugin
+        * http://craftpip.github.io/jquery-confirm/
+        * mostrar la infomacion grabada usando el plugin datatables con editor
+*   1.0.0 28/02/2015 Versión para presentar en el primer plazo.
+    1.  Bugs
+        * Los campos contraseña no estan enmascarados
+    2.  Mejoras pendientes
+        * grabar en base de datos
+        * mensajes al aceptar el formulario con growl pero como no consigo el de confirmación lo intentare con el plugin
+        * http://craftpip.github.io/jquery-confirm/
+        * mostrar la infomacion grabada usando el plugin datatables con editor
+
 # Enunciado
 
 Se realiza una página web para una empresa que vende servicios de Internet a otras compañías.
 La empresa nos solicita un un formulario de contacto en el que recogeremos no sólo los datos de contacto, sino también los datos para facturación o acceso por Internet.
 
 **Información de Contacto:**
-- Nombre* 		
-- Apellidos* 	
+- Nombre*       
+- Apellidos*    
 - Teléfono*
-- email* 	
-- repetir email 		
+- email*    
+- repetir email         
 - ¿Cómo nos has conocido? (Prefiero no contestar, Publicidad, Profesionales del sector, Internet, A través de un amigo o conocido )
 
 **Datos de facturación:**
@@ -46,26 +42,26 @@ La empresa nos solicita un un formulario de contacto en el que recogeremos no s�
 - Localidad*
 - Provincia*
 - País*
-- Código IBAN* 		
-- Forma de pago: Mensual, Trimestral, Anual* 	
+- Código IBAN*      
+- Forma de pago: Mensual, Trimestral, Anual*    
 
 **Datos de acceso:**
-- usuario* 		
-- contraseña* 	
-- repetir contraseña 	
+- usuario*      
+- contraseña*   
+- repetir contraseña    
 
 **Validaciones y comportamiento del formulario:**
 Debemos hacer las siguientes validaciones en cliente antes de hacer el envío del formulario:
-- Todos los campos con * son requeridos	
+- Todos los campos con * son requeridos 
 - Comprobaremos que el usuario no exista previamente en la bbdd (NIF o email, el CIF no es necesario).
-- Teléfono contendrá solo dígitos y un total de 9.	
+- Teléfono contendrá solo dígitos y un total de 9.  
 - CP tendrán que ser 5 digitos. Si son menos se completará con 0 a la izquierda.
 - email debe ser un correo electrónico válido (al menos en apariencia)
-- Por defecto estará marcado como demandante Particular y como Nombre (apartado Datos de facturación) la combinación de los campos Nombre y Apellidos de la información de contacto. Si el usuario selecciona como demandante Empresa, se borrará el contenido del campo “Nombre”, que pasará a llamarse “Empresa” para que el usuario lo rellene. 	
+- Por defecto estará marcado como demandante Particular y como Nombre (apartado Datos de facturación) la combinación de los campos Nombre y Apellidos de la información de contacto. Si el usuario selecciona como demandante Empresa, se borrará el contenido del campo “Nombre”, que pasará a llamarse “Empresa” para que el usuario lo rellene.  
 - Los campos CIF/NIF y Nombre/Empresa adecuarán su label en función del demandante seleccionado.
 - Una vez insertado el código postal, se debe seleccionar la provincia y la localidad de forma automática. La localidad se rellenará con criterio libre.
 - El código IBAN debe ser válido.
-- El usuario debe tener al menos 4 caracteres, se rellenará de modo automático 	con el correo electrónico y no podrá ser modificado.
+- El usuario debe tener al menos 4 caracteres, se rellenará de modo automático  con el correo electrónico y no podrá ser modificado.
 - La contraseña se debe forzar a que sea compleja.
 - Una vez pulsemos enviar en el formulario se mostrará un aviso al usuario de que se va a dar de alta y que se le pasará la primera cuota de 50€, 140€ o 550€ según corresponda (forma de pago). El usuario podrá cancelar la operación.
 
@@ -74,7 +70,7 @@ Debemos hacer las siguientes validaciones en cliente antes de hacer el envío de
 - El CIF que probaré es el siguiente: A28017895 (El Corte Inglés).
 - El código IBAN: ES91 2085 0166 69 0330150871
 
-	
+    
 **Requerimientos adicionales:**
 - Uso de al menos un plugin adicional, por ejemplo:
     - jquery Complexify para la complejidad de la contraseña.
@@ -90,5 +86,3 @@ Debemos hacer las siguientes validaciones en cliente antes de hacer el envío de
 - Para la validación te puedes ayudar de la práctica solucionada de validación que os proporcioné.
 - [Capítulo I y II del libro Pro git](http://git-scm.com/book/es/v1), para entender el control de versiones git (aunque tan solo serán necesarios 4 o 5 comandos, viene bien para entender lo que hacemos).
 - [Artículo sobre uso de Yeoman](http://www.formandome.es/varios/yeoman-automatizar-el-flujo-de-trabajo-en-desarrollo-web/), donde además utilizo jQuery Validate.
-
-

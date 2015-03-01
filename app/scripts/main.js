@@ -1,10 +1,10 @@
-//console.log('\'Hola \'Hola! javier');
+//console.log('\'Hola \'Hola!');
 'use strict';
 
 // cargamos las provincias
-$('#provincia').load("php/provincias.php");
+$('#provincia').load("http://javieriranzo.infenlaces.com/2014_2015/DAW_DAWEC/practicaValidacionFormularios/dist/php/provincias.php");
 // cargamos los paises
-$("#pais").load("php/paises.php");
+$("#pais").load("http://javieriranzo.infenlaces.com/2014_2015/DAW_DAWEC/practicaValidacionFormularios/dist/php/paises.php");
 
 $("#formulario").validate({
     // oculta y muestra el campo no valido ... pero es un tanto molesto ;)
@@ -32,7 +32,7 @@ $("#formulario").validate({
         email: {
             required: true,
             email: true, // que parezca un e-mail
-            remote: "php/comprueba_email.php"
+            remote: "http://javieriranzo.infenlaces.com/2014_2015/DAW_DAWEC/practicaValidacionFormularios/dist/php/comprueba_email.php"
         },
         email2: {
             required: true,
@@ -59,7 +59,7 @@ $("#formulario").validate({
                     return 'cifES';
                 }
             },
-            remote: "php/comprueba_cif_nif.php" // usa el programa indicado
+            remote: "http://javieriranzo.infenlaces.com/2014_2015/DAW_DAWEC/practicaValidacionFormularios/dist/php/comprueba_cif_nif.php" // usa el programa indicado
         },
         nombre_empresa: {
             required: true
@@ -137,10 +137,10 @@ $("#formulario").validate({
         usuario: {
             required: "El usuario es obligatorio."
         },
-        contraseña: {
+        contrasena: {
             required: "La contraseña es obligatoria."
         },
-        contraseña2: {
+        contrasena2: {
             required: "La confirmación de la contraseña es obligatoria."
         },
         nombre_empresa: {
@@ -159,7 +159,7 @@ $("#formulario").validate({
             var dataString = 'usuario=' + $('#usuario').val() + '&contrasena=' + $('#contrasena').val() + '&nombre=' + $('#nombre').val() + '&apellidos=' + $('#apellidos').val() + '&email=' + $('#email').val() + '&cif_nif=' + $('#cif_nif').val();
             $.ajax({
                 type: "POST", // tipo de la llamada ajax
-                url: "php/graba.php", // que archivo procesa la llamada
+                url: "http://javieriranzo.infenlaces.com/2014_2015/DAW_DAWEC/practicaValidacionFormularios/dist/php/graba.php", // que archivo  la llamada
                 data: dataString, //los datos que van con la llamada tipo usuario=javier&contrasena=undefined&nombre=javier&apellidos=iranzo&email=javieriranzo@hotmail.com&cif_nif=1770301v
                 success: function(data) {
                     $("#ok").html(data);
@@ -197,8 +197,8 @@ $("#nombre_empresa").focus(function() {
 });
 
 // Metodo que gestiona la complexidad de la contraseña.
-$("#contraseña").focusin(function() {
-    $("#contraseña").complexify({}, function(valid, complexity) {
+$("#contrasena").focusin(function() {
+    $("#contrasena").complexify({}, function(valid, complexity) {
         $("#BarraPass").attr("value", complexity);
     });
 });
