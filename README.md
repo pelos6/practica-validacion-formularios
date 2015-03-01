@@ -1,29 +1,29 @@
 # Práctica Validación de Formularios Javier Iranzo Burriel.
 # Versiones
-.- 1.0.1 01/03/2015  
-    .- Versión estable para presentar.
-    # Bugs
-        .- Corregido :Los campos contraseña no estan enmascarados
-    # Mejoras pendientes
-        .- mensajes al aceptar el formulario con growl pero como no consigo el de confirmación lo intentare con el plugin 
-        jquery-confirm 
-        http://craftpip.github.io/jquery-confirm/
-        .- grabar en base de datos
-        .- mostrar la información grabada
-        .- editar la información grabada
-.- fin 1.0.1
-.- 1.0.0 28/02/2015
-    .- Primera versión estable para presentar en el primer plazo.
-    # Bugs
-        .- Los campos contraseña no estan enmascarados
-    # Mejoras pendientes
-        .- mensajes al aceptar el formulario con growl pero como no consigo el de confirmación lo intentare con el plugin 
-        jquery-confirm 
-        http://craftpip.github.io/jquery-confirm/
-        .- grabar en base de datos
-        .- mostrar la información grabada
-        .- editar la información grabada
-.- fin 1.0.0
+.- 1.0.1 01/03/2015
+- .- Versión estable para presentar.
+-  # Bugs
+-      .- Corregido :Los campos contraseña no estan enmascarados
+-  # Mejoras pendientes
+-   .- mensajes al aceptar el formulario con growl pero como no consigo el de confirmación lo intentare con el plugin 
+-    jquery-confirm 
+-       http://craftpip.github.io/jquery-confirm/
+-   .- grabar en base de datos
+-   .- mostrar la información grabada
+-   .- editar la información grabada
+-.- fin 1.0.1
+-.- 1.0.0 28/02/2015
+-.- Primera versión estable para presentar en el primer plazo.
+- # Bugs
+-      .- Los campos contraseña no estan enmascarados
+- # Mejoras pendientes
+-    .- mensajes al aceptar el formulario con growl pero como no consigo el de confirmación lo intentare con el plugin 
+-    jquery-confirm 
+-   http://craftpip.github.io/jquery-confirm/
+-  .- grabar en base de datos
+-  .- mostrar la información grabada
+-  .- editar la información grabada
+-.- fin 1.0.0
 # Enunciado
 
 Se realiza una página web para una empresa que vende servicios de Internet a otras compañías.
