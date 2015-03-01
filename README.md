@@ -1,29 +1,22 @@
-# Práctica Validación de Formularios Javier Iranzo Burriel.
-# Versiones
-.- 1.0.1 01/03/2015
-- .- Versión estable para presentar.
--  # Bugs
--      .- Corregido :Los campos contraseña no estan enmascarados
--  # Mejoras pendientes
--   .- mensajes al aceptar el formulario con growl pero como no consigo el de confirmación lo intentare con el plugin 
--    jquery-confirm 
--       http://craftpip.github.io/jquery-confirm/
--   .- grabar en base de datos
--   .- mostrar la información grabada
--   .- editar la información grabada
-- .- fin 1.0.1
--   .- 1.0.0 28/02/2015
--   .- Primera versión estable para presentar en el primer plazo.
-- # Bugs
--      .- Los campos contraseña no estan enmascarados
-- # Mejoras pendientes
--    .- mensajes al aceptar el formulario con growl pero como no consigo el de confirmación lo intentare con el plugin 
--    jquery-confirm 
--   http://craftpip.github.io/jquery-confirm/
--  .- grabar en base de datos
--  .- mostrar la información grabada
--  .- editar la información grabada
--.- fin 1.0.0
+# Práctica Validación de Formularios Javier Iranzo Burriel.#
+## Versiones##
+*   1.0.1 01/03/2015 Versión estable para presentar.
+    1.  Bugs
+        * Corregido :Los campos contraseña no estan enmascarados
+    2.  Mejoras pendientes
+        * grabar en base de datos
+        * mensajes al aceptar el formulario con growl pero como no consigo el de confirmación lo intentare con el plugin
+        * http://craftpip.github.io/jquery-confirm/
+        * mostrar la infomacion grabada usando el plugin datatables con editor
+*   1.0.0 28/02/2015 Versión para presentar en el primer plazo.
+    1.  Bugs
+        * Los campos contraseña no estan enmascarados
+    2.  Mejoras pendientes
+        * grabar en base de datos
+        * mensajes al aceptar el formulario con growl pero como no consigo el de confirmación lo intentare con el plugin
+        * http://craftpip.github.io/jquery-confirm/
+        * mostrar la infomacion grabada usando el plugin datatables con editor
+
 # Enunciado
 
 Se realiza una página web para una empresa que vende servicios de Internet a otras compañías.
@@ -90,5 +83,3 @@ Debemos hacer las siguientes validaciones en cliente antes de hacer el envío de
 - Para la validación te puedes ayudar de la práctica solucionada de validación que os proporcioné.
 - [Capítulo I y II del libro Pro git](http://git-scm.com/book/es/v1), para entender el control de versiones git (aunque tan solo serán necesarios 4 o 5 comandos, viene bien para entender lo que hacemos).
 - [Artículo sobre uso de Yeoman](http://www.formandome.es/varios/yeoman-automatizar-el-flujo-de-trabajo-en-desarrollo-web/), donde además utilizo jQuery Validate.
-
-
