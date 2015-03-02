@@ -4,6 +4,8 @@
     1.  Bugs
         * corregido: no validaba en iExplorer 
         * corregido: no hace un css minified para main.css lo une con los vendor css.
+    2.  Mejoras realizadas
+        * uso del plugin jquery-confirm http://craftpip.github.io/jquery-confirm/ para los mensajes de confirmación.
 *   1.0.1 01/03/2015 Versión estable para presentar.
     1.  Bugs
         * Corregido :Los campos contraseña no estan enmascarados
