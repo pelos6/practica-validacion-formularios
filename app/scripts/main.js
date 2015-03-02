@@ -14,7 +14,7 @@ $("#formulario").validate({
           });
       },*/
     // util para probar el final ...
-    //ignore: ".form-control",
+    // ignore: ".form-control",
     debug: true,
     rules: {
         nombre: {
@@ -152,7 +152,30 @@ $("#formulario").validate({
     submitHandler: function(form) {
         var usuario = $("#usuario").val();
         var precio = $("input[name='pago']:checked").val();
-         var resp = confirm("Se va a dar de alta al usuario " + usuario + " con una cuota de: " + precio +
+        $.confirm({
+            title: 'Confirmación del alta!',
+            confirmButton: 'Aceptar la operacion',
+            cancelButton: 'Cancelar la operación',
+            backgroundDismiss: false,
+            content: 'Se va a dar de alta al usuario ' + usuario + ' con una cuota de: ' + precio + ' Euros. Por favor confirme la operación',
+            confirm: function() {
+                $.alert({
+                    title: 'Confirmación correcta',
+                    confirmButton: 'Aceptar',
+                    backgroundDismiss: false,
+                    content: 'Confirmada el alta del usuario ' + usuario + ' .',
+                });
+            },
+            cancel: function() {
+                $.alert({
+                    title: 'Cancelación de la operación!',
+                    confirmButton: 'Aceptar',
+                    backgroundDismiss: false,
+                    content: 'Cancelada el alta del usuario ' + usuario + ' .',
+                });
+            }
+        });
+        /* var resp = confirm("Se va a dar de alta al usuario " + usuario + " con una cuota de: " + precio +
              " Euros. \nPor favor confirme la operación");
         if (resp) {
             alert("Confirmada el alta del usuario " + usuario + " .");
@@ -169,19 +192,7 @@ $("#formulario").validate({
             });
         } else {
              alert("Cancelada el alta del usuario " + usuario + " .");
-        }
-
-        /*  var dataString = 'usuario=' + $('#usuario').val() + '&contrasena=' + $('#contrasena').val() + '&nombre=' + $('#nombre').val() + '&apellidos=' + $('#apellidos').val() + '&email=' + $('#email').val() + '&cif_nif=' + $('#cif_nif').val();
-          $.ajax({
-              type: "POST", // tipo de la llamada ajax
-              url: "php/graba.php", // que archivo recive la llamada
-              data: dataString, //los datos que van con la llamada tipo usuario=javier&contrasena=undefined&nombre=javier&apellidos=iranzo&email=javieriranzo@hotmail.com&cif_nif=1770301v
-              success: function(data) {
-                  $("#ok").html(data);
-                  $("#ok").show();
-                  $("#formid").hide();
-              }
-          });*/
+        }*/
     }
 });
 
@@ -397,13 +408,13 @@ $.validator.addMethod("iban", function(value, element) {
         cRest = cOperator % 97;
     }
     return cRest === 1;
-}, "Please specify a valid IBAN");
+}, "Por favor, introduzca un IBAN válido");
 
 /*
  * Código de identificación fiscal ( CIF ) is the tax identification code for Spanish legal entities
  * Further rules can be found in Spanish on http://es.wikipedia.org/wiki/C%C3%B3digo_de_identificaci%C3%B3n_fiscal
  */
-$.validator.addMethod( "cifES", function( value ) {
+$.validator.addMethod("cifES", function(value) {
     "use strict";
 
     var num = [],
@@ -412,21 +423,21 @@ $.validator.addMethod( "cifES", function( value ) {
     value = value.toUpperCase();
 
     // Quick format test
-    if ( !value.match( "((^[A-Z]{1}[0-9]{7}[A-Z0-9]{1}$|^[T]{1}[A-Z0-9]{8}$)|^[0-9]{8}[A-Z]{1}$)" ) ) {
+    if (!value.match("((^[A-Z]{1}[0-9]{7}[A-Z0-9]{1}$|^[T]{1}[A-Z0-9]{8}$)|^[0-9]{8}[A-Z]{1}$)")) {
         return false;
     }
 
-    for ( i = 0; i < 9; i++ ) {
-        num[ i ] = parseInt( value.charAt( i ), 10 );
+    for (i = 0; i < 9; i++) {
+        num[i] = parseInt(value.charAt(i), 10);
     }
 
     // Algorithm for checking CIF codes
-    sum = num[ 2 ] + num[ 4 ] + num[ 6 ];
-    for ( count = 1; count < 8; count += 2 ) {
-        tmp = ( 2 * num[ count ] ).toString();
-        secondDigit = tmp.charAt( 1 );
+    sum = num[2] + num[4] + num[6];
+    for (count = 1; count < 8; count += 2) {
+        tmp = (2 * num[count]).toString();
+        secondDigit = tmp.charAt(1);
 
-        sum += parseInt( tmp.charAt( 0 ), 10 ) + ( secondDigit === "" ? 0 : parseInt( secondDigit, 10 ) );
+        sum += parseInt(tmp.charAt(0), 10) + (secondDigit === "" ? 0 : parseInt(secondDigit, 10));
     }
 
     /* The first (position 1) is a letter following the following criteria:
@@ -450,16 +461,16 @@ $.validator.addMethod( "cifES", function( value ) {
      *  V. Agrarian Transformation
      *  W. Permanent establishments of non-resident in Spain
      */
-    if ( /^[ABCDEFGHJNPQRSUVW]{1}/.test( value ) ) {
+    if (/^[ABCDEFGHJNPQRSUVW]{1}/.test(value)) {
         sum += "";
-        controlDigit = 10 - parseInt( sum.charAt( sum.length - 1 ), 10 );
+        controlDigit = 10 - parseInt(sum.charAt(sum.length - 1), 10);
         value += controlDigit;
-        return ( num[ 8 ].toString() === String.fromCharCode( 64 + controlDigit ) || num[ 8 ].toString() === value.charAt( value.length - 1 ) );
+        return (num[8].toString() === String.fromCharCode(64 + controlDigit) || num[8].toString() === value.charAt(value.length - 1));
     }
 
     return false;
 
-}, "Please specify a valid CIF number." );
+}, "Por favor, escribe un CIF válido.");
 
 /*
  * The Número de Identificación Fiscal ( NIF ) is the way tax identification used in Spain for individuals
