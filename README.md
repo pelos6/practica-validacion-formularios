@@ -1,5 +1,8 @@
 # Práctica Validación de Formularios Javier Iranzo Burriel.#
 ## Versiones##
+*   1.0.3 
+    1. Bugs
+        * bug el mensaje de nif cif sale en ingles !!!!
 *   1.0.2 01/03/2015 Versión estable para presentar.
     1.  Bugs
         * corregido: no validaba en iExplorer 

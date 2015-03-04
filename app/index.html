@@ -10,8 +10,8 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
-    <link rel="stylesheet" href="bower_components/confirm/jquery-confirm.css" />
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="../bower_components/confirm/jquery-confirm.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -203,8 +203,11 @@
             <div class="form-group">
                 <label class="col-md-4 control-label" for="singlebutton"></label>
                 <div class="col-md-4">
-                    <button id="singlebutton" name="singlebutton" class="btn btn-primary">Enviar</button>
-                    <button type="reset" onclick="window.location.reload()" class="btn btn-primary">Limpiar</button>
+                  <!--  <button id="singlebutton" name="singlebutton" class="btn btn-primary">Enviar</button>
+                    <button type="reset" onclick="window.location.reload()" class="btn btn-primary">Enviar</button> -->
+                    <!-- http://abarcarodriguez.com/365/show?e=11 -->
+                    <button class="boton color3"  href="javascript:;">Enviar</a>
+                    <button class="boton color4" onclick="window.location.reload()" href="javascript:;">Limpiar</a>
                 </div>
             </div>
 
@@ -218,15 +221,16 @@
     </div>
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
-    <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="bower_components/jquery-validate/dist/jquery.validate.js"></script>
-    <script src="bower_components/jquery.complexify.js/jquery.complexify.js"></script>
-    <script src="bower_components/confirm/jquery-confirm.js"></script>
+    <script src="../bower_components/jquery/dist/jquery.js"></script>
+    <script src="../bower_components/jquery-validate/dist/jquery.validate.js"></script>
+    <script src="../bower_components/jquery.complexify.js/jquery.complexify.js"></script>
+    <script src="../bower_components/confirm/jquery-confirm.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:js({app,.tmp}) scripts/main.js -->
     <script src="scripts/messages_es.js"></script>
     <script src="scripts/main.js"></script>
+    <script src="scripts/boxshadow.js"></script>
     <!--<script src="scripts/additional-methods.js"></script>-->
     <!-- endbuild -->
 </body>

@@ -14,7 +14,7 @@ $("#formulario").validate({
           });
       },*/
     // util para probar el final ...
-    // ignore: ".form-control",
+   // ignore: ".form-control",
     debug: true,
     rules: {
         nombre: {
@@ -489,4 +489,16 @@ jQuery.validator.addMethod("nifES", function(value, element) {
             return false;
         }
     }
+});
+
+$("button.boton").mousedown(function () {
+  $(this).animate({
+    'top': '5px',
+    'boxShadowY': '0'
+  }, 100);
+}).mouseup(function () {
+  $(this).animate({
+    'top': '0',
+    'boxShadowY': '5px'
+  }, 100);
 });
