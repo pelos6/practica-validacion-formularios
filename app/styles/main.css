@@ -59,19 +59,14 @@ background-color: #f0f0f0;
   text-decoration: none;
   margin-bottom: 15px;
 }
-button.color2 {
-  background-color:#e74c3c;
-  -webkit-box-shadow: 0px 5px 0px #c0392b;
-  -moz-box-shadow: 0px 5px 0px #c0392b;
-  box-shadow: 0px 5px 0px #c0392b;
-}
-button.color3 {
+
+button.color1 {
   background-color:#95a5a6;
   -webkit-box-shadow: 0px 5px 0px #7f8c8d;
   -moz-box-shadow: 0px 5px 0px #7f8c8d;
   box-shadow: 0px 5px 0px #7f8c8d;
 }
-button.color4 {
+button.color2 {
   background-color:#e67e22;
   -webkit-box-shadow: 0px 5px 0px #d35400;
   -moz-box-shadow: 0px 5px 0px #d35400;

@@ -14,7 +14,7 @@ $("#formulario").validate({
           });
       },*/
     // util para probar el final ...
-   // ignore: ".form-control",
+    // ignore: ".form-control",
     debug: true,
     rules: {
         nombre: {
@@ -59,6 +59,7 @@ $("#formulario").validate({
                     return 'cifES';
                 }
             },
+            //remote: "php/comprueba_cif_nif.php"
             remote: "http://javieriranzo.infenlaces.com/2014_2015/DAW_DAWEC/practicaValidacionFormularios/dist/php/comprueba_cif_nif.php" // usa el programa indicado
         },
         nombre_empresa: {
@@ -92,10 +93,11 @@ $("#formulario").validate({
             required: true,
             minlength: 4
         },
-        contraseña: {
-            required: true
+        contrasena: {
+            required: true,
+            complexPass:true,
         },
-        contraseña2: {
+        contrasena2: {
             required: true,
             equalTo: "#contraseña"
         },
@@ -116,12 +118,11 @@ $("#formulario").validate({
             required: "Por favor confirma la dirección de correo electrónico",
             equalTo: "Las direcciones de correo no son iguales"
         },
-        contraseña: {
-            required: "La contraseña es obligatoria",
+        localidad: {
+            required: "Por favor introduce una localidad"
         },
-        contraseña2: {
-            required: "Por favor confirma la contraseña",
-            equalTo: "Las contraseñas no son iguales"
+        iban: {
+            required: "Por favor introduce un código de IBAN"
         },
         codigo_postal: {
             required: "El código postal es obligatoria",
@@ -141,7 +142,8 @@ $("#formulario").validate({
             required: "La contraseña es obligatoria."
         },
         contrasena2: {
-            required: "La confirmación de la contraseña es obligatoria."
+            required: "La confirmación de la contraseña es obligatoria.",
+            equalTo: "Las contraseñas no son iguales"
         },
         nombre_empresa: {
             required: "La información de este campo es importante."
@@ -175,24 +177,6 @@ $("#formulario").validate({
                 });
             }
         });
-        /* var resp = confirm("Se va a dar de alta al usuario " + usuario + " con una cuota de: " + precio +
-             " Euros. \nPor favor confirme la operación");
-        if (resp) {
-            alert("Confirmada el alta del usuario " + usuario + " .");
-            var dataString = 'usuario=' + $('#usuario').val() + '&contrasena=' + $('#contrasena').val() + '&nombre=' + $('#nombre').val() + '&apellidos=' + $('#apellidos').val() + '&email=' + $('#email').val() + '&cif_nif=' + $('#cif_nif').val();
-            $.ajax({
-                type: "POST", // tipo de la llamada ajax
-                url: "http://javieriranzo.infenlaces.com/2014_2015/DAW_DAWEC/practicaValidacionFormularios/dist/php/graba.php", // que archivo  la llamada
-                data: dataString, //los datos que van con la llamada tipo usuario=javier&contrasena=undefined&nombre=javier&apellidos=iranzo&email=javieriranzo@hotmail.com&cif_nif=1770301v
-                success: function(data) {
-                    $("#ok").html(data);
-                    $("#ok").show();
-                    $("#formid").hide();
-                }
-            });
-        } else {
-             alert("Cancelada el alta del usuario " + usuario + " .");
-        }*/
     }
 });
 
@@ -253,7 +237,8 @@ $('#particular').change(function() {
 
 });
 
-// Si el Código Postal se compone de 4 dígitos, se agrega un 0 a la izquierda.
+// Si el Código Postal tiene menos de 5 dígitos se agregan 0 a la izquierda.
+// CP tendrán que ser 5 digitos. Si son menos se completará con 0 a la izquierda.
 $("#codigo_postal").focusout(function() {
     var cp = $('#codigo_postal').val();
     var digitos = cp.length;
@@ -268,19 +253,36 @@ $("#codigo_postal").focusout(function() {
              $("#codigo_postal").val("0" + caracteres);
          }*/
     var cod = parseInt(resultado.substring(0, 2));
+    $("#provincia option[value=" + cod + "]").attr("selected", true);
+    if (cod > 0 && cod < 53) {
+        $("#pais").val('ES');
+        $("#localidad").val($('#provincia option[value='+cod+']').text());
+    } else {
+        $("#pais").val('');
+        $("#localidad").val('');
+        $("#provincia").val('');
+    }
+/*
     if (cod === 50) {
         $("#localidad").val('Zaragoza');
     } else {
         $("#localidad").val('');
     }
-    $("#provincia option[value=" + cod + "]").attr("selected", true);
-    if (cod > 0 && cod < 53) {
-        $("#pais").val('España');
-    } else {
-        $("#pais").val('');
-    }
+    */
 
 });
+
+// Comprobando la complejidad de la contraseña .
+jQuery.validator.addMethod('complexPass', function(value, element) {
+    var level = $('#BarraPass').attr('value');
+    if(level>=50){
+        return true;
+    }
+    else{
+        return false;
+    }
+}, 'Por favor introduce una contraseña más segura.');
+
 
 // meto estos metodos de additional.methods para no tener que cargar el archivo completo
 /**
@@ -489,16 +491,17 @@ jQuery.validator.addMethod("nifES", function(value, element) {
             return false;
         }
     }
-});
+}, "Por favor, escribe un NIF válido.");
+//});
 
-$("button.boton").mousedown(function () {
-  $(this).animate({
-    'top': '5px',
-    'boxShadowY': '0'
-  }, 100);
-}).mouseup(function () {
-  $(this).animate({
-    'top': '0',
-    'boxShadowY': '5px'
-  }, 100);
+$("button.boton").mousedown(function() {
+    $(this).animate({
+        'top': '5px',
+        'boxShadowY': '0'
+    }, 100);
+}).mouseup(function() {
+    $(this).animate({
+        'top': '0',
+        'boxShadowY': '5px'
+    }, 100);
 });

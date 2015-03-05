@@ -45,7 +45,7 @@ if (!$error) {
  // no hay error 
 if (!$error) {
     if ($usuario_existe) {
-        $salida='"Este usuario ya está en uso"';
+        $salida='"El usuario con nif '.$cif_nif.' ya está en uso"';
     } else {
        $salida='true'; // el campo se ha validado
     }

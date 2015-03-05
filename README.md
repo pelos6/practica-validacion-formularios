@@ -1,10 +1,16 @@
 # Práctica Validación de Formularios Javier Iranzo Burriel.#
 ## Versiones##
 *   para la 1.0.3 
-    1. Bugs
-        * bug el mensaje de nif cif sale en ingles !!!!
-    2.  Mejoras realizadas
-        * botones con personalidad !!! http://abarcarodriguez.com/365/show?e=11
+    1. Bugs detectados por Juanda
+        * Corregido. Error de NIF en inglés 
+        * Corregido. "El usuario con nif 25456737S ya existe". Error NIF existente sin personalizar: "Este usuario ya está en uso" 
+        * Corregido. Ahora propone como localidad la misma que la provincia por ser lo más probable. Implentación de la localidad poco versátil. 
+    2. Bugs 
+        * Corregido. el mensaje de nif cif sale en ingles !!!
+        * Corregido. nombre_empresa no salta el required
+    3.  Mejoras realizadas
+        * botones con personalidad.  http://abarcarodriguez.com/365/show?e=11
+        * complejidad de la contraseña coherente con color de la barra 
 *   1.0.2 01/03/2015 Versión estable para presentar.
     1.  Bugs
         * corregido: no validaba en iExplorer 
@@ -94,8 +100,5 @@ Debemos hacer las siguientes validaciones en cliente antes de hacer el envío de
 **Ayuda**:
 - Para la validación te puedes ayudar de la práctica solucionada de validación que os proporcioné.
 - [Capítulo I y II del libro Pro git](http://git-scm.com/book/es/v1), para entender el control de versiones git (aunque tan solo serán necesarios 4 o 5 comandos, viene bien para entender lo que hacemos).
-<<<<<<< HEAD
 - [Artículo sobre uso de Yeoman](http://www.formandome.es/varios/yeoman-automatizar-el-flujo-de-trabajo-en-desarrollo-web/), donde además utilizo jQuery Validate.
-=======
-- [Artículo sobre uso de Yeoman](http://www.formandome.es/varios/yeoman-automatizar-el-flujo-de-trabajo-en-desarrollo-web/), donde además utilizo jQuery Validate.
->>>>>>> b6313f3ea06f484f934a69bfb0630e3148744d3e
+
