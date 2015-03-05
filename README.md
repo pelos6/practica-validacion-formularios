@@ -1,6 +1,6 @@
 # Práctica Validación de Formularios Javier Iranzo Burriel.#
 ## Versiones##
-*   para la 1.0.3 
+*   1.0.3 05/03/2015 con las correciones de Juanda
     1. Bugs detectados por Juanda
         * Corregido. Error de NIF en inglés 
         * Corregido. "El usuario con nif 25456737S ya existe". Error NIF existente sin personalizar: "Este usuario ya está en uso" 
